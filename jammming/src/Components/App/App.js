@@ -15,7 +15,11 @@ class App extends React.Component {
       playlistName: 'My playlist',
       playlistTracks: []
     }
-    this._bind('updatePlaylistName', 'addTrack', 'removeTrack', 'savePlaylist', 'search');
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
+    this.search = this.search.bind(this);
   }
 
   updatePlaylistName(name) {
