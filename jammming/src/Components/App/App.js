@@ -29,17 +29,19 @@ class App extends React.Component {
   }
 
   addTrack(track) {
-    if (!this.state.playlistTracks.find(playlistTrack => playlistTrack.id === track.id)) {
-      this.setState(prevState => ({
-        playlistTracks: [...prevState.playlistTracks, track]
-      }));
+    let tracks = this.state.playlistTracks;
+    if (tracks.find(savedTrack => savedTrack.id === track.id)) {
+      return;
     }
+    tracks.push(track);
+    this.setState({playlistTracks: tracks});
   }
 
     removeTrack(track) {
-      this.setState({
-        playlistTracks: this.state.playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id)
-      });
+      let tracks = this.state.playlistTracks;
+      tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+      
+      this.setState({playlistTracks: tracks});
     }
 
     savePlaylist() {
